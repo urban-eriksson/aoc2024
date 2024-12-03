@@ -5,3 +5,4 @@ edition = "2021"
 
 [dependencies]
 reqwest = { version = "0.11", features = ["blocking", "cookies", "rustls-tls"] }
+regex = "1.11.1"
