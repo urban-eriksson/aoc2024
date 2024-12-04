@@ -1,7 +1,6 @@
-
 use aoc2024::fetch_or_load_input;
-use std::error::Error;
 use regex::Regex;
+use std::error::Error;
 
 fn main() -> Result<(), Box<dyn Error>> {
     let day = 3;
@@ -9,10 +8,10 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     let tokens = tokenize_input(&input)?;
 
-    let total_part_one = process_tokens(&tokens); 
+    let total_part_one = process_tokens(&tokens);
     println!("Total part one: {}", total_part_one);
 
-    let total_part_two = process_tokens_with_dos_and_donts(&tokens);    
+    let total_part_two = process_tokens_with_dos_and_donts(&tokens);
     println!("Total with do() and don't(): {}", total_part_two);
 
     Ok(())
@@ -73,7 +72,7 @@ fn process_tokens(tokens: &[PositionedToken]) -> i32 {
     let mut total = 0;
 
     for token in tokens {
-        if let Token::Mul(x,y) = token.token {
+        if let Token::Mul(x, y) = token.token {
             total += x * y;
         }
     }
@@ -125,5 +124,4 @@ mod tests {
         let expected_total = 48;
         assert_eq!(total, expected_total);
     }
-
 }

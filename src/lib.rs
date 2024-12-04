@@ -17,9 +17,7 @@ pub fn fetch_or_load_input(day: u32) -> Result<String, Box<dyn Error>> {
         let session_cookie = env::var("AOC_SESSION")
             .map_err(|_| "Environment variable AOC_SESSION is not set or invalid")?;
 
-        let client = Client::builder()
-            .cookie_store(true)
-            .build()?;
+        let client = Client::builder().cookie_store(true).build()?;
 
         let url = format!("https://adventofcode.com/2024/day/{}/input", day);
 
@@ -43,6 +41,5 @@ pub fn fetch_or_load_input(day: u32) -> Result<String, Box<dyn Error>> {
             }
             status => Err(format!("Failed to fetch input: HTTP {}", status).into()),
         }
-    }    
-
+    }
 }

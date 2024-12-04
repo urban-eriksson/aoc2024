@@ -5,35 +5,39 @@ fn main() -> Result<(), Box<dyn Error>> {
     let day = 2;
     let input = fetch_or_load_input(day)?;
 
-
     let number_of_safe_reports = calculate_safe_reports_part_one(&input)?;
     println!("Number of safe reports: {}", number_of_safe_reports);
 
     let number_of_safe_reports = calculate_safe_reports_part_two(&input)?;
-    println!("Number of safe reports with up to one deletion: {}", number_of_safe_reports);
+    println!(
+        "Number of safe reports with up to one deletion: {}",
+        number_of_safe_reports
+    );
 
     Ok(())
 }
 
 fn calculate_safe_reports_part_one(input: &str) -> Result<usize, Box<dyn Error>> {
     let rows = parse_input(input)?;
-    let valid_count = rows.iter()
+    let valid_count = rows
+        .iter()
         .map(|row| is_valid_sequence(row))
-        .filter(|&is_valid| is_valid).count();
+        .filter(|&is_valid| is_valid)
+        .count();
 
     Ok(valid_count)
 }
-
 
 fn calculate_safe_reports_part_two(input: &str) -> Result<usize, Box<dyn Error>> {
     let rows = parse_input(input)?;
-    let valid_count = rows.iter()
+    let valid_count = rows
+        .iter()
         .map(|row| is_valid_or_can_be_made_valid(row))
-        .filter(|&is_valid| is_valid).count();
+        .filter(|&is_valid| is_valid)
+        .count();
 
     Ok(valid_count)
 }
-
 
 fn parse_input(input: &str) -> Result<Vec<Vec<i32>>, Box<dyn Error>> {
     let mut rows = Vec::new();
@@ -43,21 +47,11 @@ fn parse_input(input: &str) -> Result<Vec<Vec<i32>>, Box<dyn Error>> {
             continue; // Skip empty lines
         }
 
-        let numbers: Result<Vec<i32>, _> = line
-            .split_whitespace()
-            .map(str::parse)
-            .collect();
+        let numbers: Result<Vec<i32>, _> = line.split_whitespace().map(str::parse).collect();
 
         match numbers {
             Ok(nums) => rows.push(nums),
-            Err(e) => {
-                return Err(format!(
-                    "Error parsing line {}: {}",
-                    line_number + 1,
-                    e
-                )
-                .into())
-            }
+            Err(e) => return Err(format!("Error parsing line {}: {}", line_number + 1, e).into()),
         }
     }
 
@@ -135,13 +129,12 @@ mod tests {
     #[test]
     fn test_calculate_safe_reports() {
         let result = calculate_safe_reports_part_one(TEST_DATA).unwrap();
-        assert_eq!(result, 2); 
+        assert_eq!(result, 2);
     }
 
     #[test]
     fn test_calculate_safe_reports_with_up_to_one_deletion() {
         let result = calculate_safe_reports_part_two(TEST_DATA).unwrap();
-        assert_eq!(result, 4); 
+        assert_eq!(result, 4);
     }
-
 }

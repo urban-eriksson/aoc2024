@@ -1,6 +1,6 @@
 use aoc2024::fetch_or_load_input;
-use std::error::Error;
 use std::collections::HashMap;
+use std::error::Error;
 
 fn main() -> Result<(), Box<dyn Error>> {
     let day = 1;
@@ -27,7 +27,7 @@ fn calculate_total_difference(input: &str) -> Result<usize, Box<dyn Error>> {
     Ok(total_difference)
 }
 
-fn parse_input(input: &str)  -> Result<(Vec<i32>, Vec<i32>), Box<dyn Error>> {
+fn parse_input(input: &str) -> Result<(Vec<i32>, Vec<i32>), Box<dyn Error>> {
     let mut column1 = Vec::new();
     let mut column2 = Vec::new();
 
