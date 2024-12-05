@@ -11,7 +11,10 @@ fn main() -> Result<(), Box<dyn Error>> {
     println!("Total occurences part one: {}", total_occurences);
 
     let total_crossing_mas_occurences = count_crossing_mas_occurrences(&grid);
-    println!("Total crossing mas occurrences part two: {}", total_crossing_mas_occurences);
+    println!(
+        "Total crossing mas occurrences part two: {}",
+        total_crossing_mas_occurences
+    );
 
     Ok(())
 }
