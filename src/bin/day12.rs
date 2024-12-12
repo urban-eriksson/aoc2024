@@ -190,8 +190,7 @@ fn number_of_sequences(array: &[usize]) -> usize {
 fn count_sides(edges: &Vec<Edge>, rows: usize, cols: usize) -> usize {
     let mut sides = 0;
 
-    let up_down = VERTICAL_DIRECTIONS;
-    for &direction in &up_down {
+    for &direction in &VERTICAL_DIRECTIONS {
         for row in 0..rows {
             let mut edge_positions: Vec<usize> = edges
                 .iter()
@@ -205,8 +204,7 @@ fn count_sides(edges: &Vec<Edge>, rows: usize, cols: usize) -> usize {
         }
     }
 
-    let left_right = HORIZONTAL_DIRECTIONS;
-    for &direction in &left_right {
+    for &direction in &HORIZONTAL_DIRECTIONS {
         for col in 0..cols {
             let mut edge_positions: Vec<usize> = edges
                 .iter()
